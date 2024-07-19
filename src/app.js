@@ -1,12 +1,12 @@
 //importamos Express
-const express = require("express");
+import express, { json } from "express";
 //Importamos las rutas de la API
-const animesRoutes = require("./routes/animes");
+import animesRoutes from "./routes/animes.js";
 // const directoresRoutes = require("./routes/directores");
 // const estudiosRoutes = require("./routes/estudios");
 // const personajesRoutes = require("./routes/personajes");
 //Importamos el middleware de manejo de errores
-const errorHandler = require("./middlewares/errorHandler");
+import errorHandler from "./middlewares/errorHandler.js";
 
 //Creamos una nueva instancia de Express
 const app = express();
@@ -17,7 +17,7 @@ const PORT = 3000;
 
 //Hace que el cuerpo de las solicitudes HTTP por ejemplo el envio de datos de un formulario, esos datos no estan automáticamente disponibles en la app del servidor, 
 //entonces se deben convertir a un objeto de javascript
-app.use(express.json());
+app.use(json());
 //Middleware de enrutamiento por ejemplo cualquier solicitud cuya ruta comience con /animes ejemplo("/animes/1, /animes/create") debe ser manejada por el enrutador animeRoutes que fue declarada arriba.
 app.use("/animes", animesRoutes);
 // app.use("/directores", directoresRoutes);

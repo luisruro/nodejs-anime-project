@@ -13,4 +13,5 @@ const errorHandler = (err, req, res, next) => {
     res.status(500).json({ message: "Ocurrió un error en el servidor"});//Envía una respuesta JSON al cliente con un mensaje que indica que ocurrió un error en el servidor.
 };
 //Exporta el middleware para que pueda ser utilizado en otros archivos de la aplicación cada archivo en Node.js es considerado un módulo y la palabra "module" representa el archivo actual
-module.exports = errorHandler;
+//para exportar una sola función
+export default errorHandler;
