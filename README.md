@@ -35,9 +35,7 @@
         "express": "^4.19.2"
 	    },
 
-***Creamos el archivo***
-.env
-***establecemos las variables ejemplo:***
+Creamos el archivo **.env** y establecemos las variables, ejemplo:
 PORT=3000
 
 **Nota:** en este proyecto no se configuraron variables de entorno.
