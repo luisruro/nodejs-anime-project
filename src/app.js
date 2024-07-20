@@ -2,11 +2,13 @@
 import express from "express";
 //Importamos las rutas de la API
 import router from "./routes/animes.js";
+import routerDirectores from "./routes/directores.js";
 // const directoresRoutes = require("./routes/directores");
 // const estudiosRoutes = require("./routes/estudios");
 // const personajesRoutes = require("./routes/personajes");
 //Importamos el middleware de manejo de errores
 import errorHandler from "./middlewares/errorHandler.js";
+
 
 //Creamos una nueva instancia de Express
 const app = express();
@@ -20,7 +22,7 @@ const PORT = 3000;
 app.use(express.json());
 //Middleware de enrutamiento por ejemplo cualquier solicitud cuya ruta comience con /animes ejemplo("/animes/1, /animes/create") debe ser manejada por el enrutador animeRoutes que fue declarada arriba.
 app.use("/animes", router);
-// app.use("/directores", directoresRoutes);
+app.use("/directores", routerDirectores);
 // app.use("/estudios", estudiosRoutes);
 // app.use("/personajes", personajesRoutes);
 //Middleware para manejo de errores

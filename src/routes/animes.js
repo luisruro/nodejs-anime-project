@@ -30,7 +30,7 @@ async function readAnimes() {
 async function writeAnimes(animes) {
     try {
         //Llamamos la función writeFile del módulo fs para escribir los datos en el archivo en la ruta animesFilePath
-        //JSON.stringify(animes, null, 2) convierte el objeto 'animes' a una cadena de texto en formato JSON con una sandría de 2 espacios para mejor legibilidad
+        //JSON.stringify(animes, null, 2) convierte el objeto 'animes' a una cadena de texto en formato JSON con una sangría de 2 espacios para mejor legibilidad
         await fs.writeFile(animesFilePath, JSON.stringify(animes, null, 2));
     } catch (error) {
         throw new Error(`Error en la promesa ${err.message}`);
@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
     };
     animes.push(newAnime); //Agregamos el objeto newAnime al final del array animes
     await writeAnimes(animes);//Esta función escribe los datos actualizados de animes en el archivo JSON
-    res.status(201).json({ messaje: "Anime creado exitosamente", Anime: newAnime });//Mensaje de confirmación de que fue agregado correctamente
+    res.status(201).json({ message: "Anime creado exitosamente", Anime: newAnime });//Mensaje de confirmación de que fue agregado correctamente
 });
 
 //Obtener todos los animes
@@ -107,6 +107,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     const animes = await readAnimes(); ////traemos todos los animes almacenados
     //El método filter crea un nuevo array que contiene todos los elementos del array 'animes' excepto el que tiene un 'id' que coincide con el 'id' especificado en la URL req.params.id ejemplo (http://localhost:3000/animes/1)
+    // !== significa que no sea igual al número que se le esta dando, entonces trae todo los animes.id que no sean iguales al id que le estoy dando
     //Entonces la constante alamacena el nuevo array de animes sin el que coincidió con el 'id' especificado
     const newAnimes = animes.filter((anime) => anime.id !== parseInt(req.params.id)); 
     if (animes.length === newAnimes.length) {
