@@ -8,5 +8,15 @@
     "id": 2,
     "name": "Spiderman",
     "animeId": 3
+  },
+  {
+    "id": 3,
+    "name": "Luis",
+    "animeId": 1
+  },
+  {
+    "id": 4,
+    "name": "Rubio",
+    "animeId": 5
   }
 ]
