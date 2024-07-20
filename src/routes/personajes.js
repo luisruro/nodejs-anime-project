@@ -30,11 +30,12 @@ const writePersonajes = async (personajes) => {
 // Crear un nuevo personaje
 
 routerPersonajes.post("/", async (req, res) => {
+    const animeUrl = await fetch(`http://localhost:3000/animes/${req.body.animeId}`);//Esto es paras que cuando ingresen en el body request el numero del id busque la entidad de animes
     const personajes = await readPersonajes();
     const newPersonaje = {
         id: personajes.length + 1,
         name: req.body.name,
-        animeId: req.body.animeId
+        animeId: await animeUrl.json()// apesar de que el nombre es json, este retorna es un objeto de javascript
     };
     personajes.push(newPersonaje);
     await writePersonajes(personajes);
@@ -62,6 +63,7 @@ routerPersonajes.get("/:id", async (req, res) => {
 // Actualizar un personaje por ID
 
 routerPersonajes.put("/:id", async (req, res) => {
+    const animeUrl = await fetch(`http://localhost:3000/animes/${req.body.animeId}`);
     const personajes = await readPersonajes();
     const personajeIndex = personajes.findIndex((personaje) => personaje.id === parseInt(req.params.id));
     if (personajeIndex === -1) {
@@ -70,7 +72,7 @@ routerPersonajes.put("/:id", async (req, res) => {
     const updatedPersonaje = {
         ...personajes[personajeIndex],
         name: req.body.name,
-        animeId: req.body.animeId
+        animeId: await animeUrl.json()
     }
     personajes[personajeIndex] = updatedPersonaje;
     await writePersonajes(personajes);

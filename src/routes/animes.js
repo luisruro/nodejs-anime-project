@@ -41,13 +41,14 @@ async function writeAnimes(animes) {
 //Crear un nuevo anime.
 //req recibe los objetos de las solicitud y res es la respuesta que se le envia al cliente
 router.post("/", async (req, res) => {
+    const estudioUrl = await fetch(`http://localhost:3000/estudios/${req.body.studioId}`); //Esto es para que cuando ingresen en el body request el numero del id busque la entidad de animes
     const animes = await readAnimes(); //esta función almacena los datos de animes que lee la función readAnimes() desde un archivo, básicamente es traer los animes que hay alamcenados
     //creamos el objeto del nuevo anime
     const newAnime = {
         id: animes.length + 1, //iniciamos con un array vacio entonces sería 0 + 1 = 1
         title: req.body.title, //El título se le asigna en el cuerpo de la solicitud 
         gender: req.body.gender,//El genero se le asigna en el cuerpo de la solicitud 
-        studioId: req.body.studioId//El estudio se le asigna en el cuerpo de la solicitud 
+        studioId: await estudioUrl.json()//El estudio se le asigna en el cuerpo de la solicitud / // apesar de que el nombre es json, este retorna es un objeto de javascript
     };
     animes.push(newAnime); //Agregamos el objeto newAnime al final del array animes
     await writeAnimes(animes);//Esta función escribe los datos actualizados de animes en el archivo JSON
@@ -78,6 +79,7 @@ router.get("/:id", async (req, res) => {
 
 //Actualizar un anime por ID
 router.put("/:id", async (req, res) => {
+    const estudioUrl = await fetch(`http://localhost:3000/estudios/${req.body.studioId}`); //Esto es para que cuando ingresen en el body request el numero del id busque la entidad de animes
     const animes = await readAnimes(); //traemos todos los animes almacenados
     //Busca el índice del primer elemento en el array 'animes' cuyo 'id' coincida con el 'id' especificado en la URL req.params.id ejemplo (http://localhost:3000/animes/1)
     //const array1 = [5, 12, 8, 130, 44];
@@ -96,7 +98,7 @@ router.put("/:id", async (req, res) => {
         ...animes[animeIndex],////me estoy trayendo el objeto que encontro en la posición (operador de propagación). Copia todas las propiedad del objeto 'anime' encontrado
         title: req.body.title,//Actualiza el título del anime con el valor proporcionado en el cuerpo de la solicitud
         gender: req.body.gender,//Actualiza el genero del anime con el valor proporcionado en el cuerpo de la solicitud
-        studioId: req.body.studioId//Actualiza el estudio del anime con el valor proporcionado en el cuerpo de la solicitud
+        studioId: await estudioUrl.json()//Actualiza el estudio del anime con el valor proporcionado en el cuerpo de la solicitud / // apesar de que el nombre es json, este retorna es un objeto de javascript
     };
     animes[animeIndex] = updatedAnime; // reemplaza el objeto de anime en el índice encontrado con el objeto 'updateAnime'
     await writeAnimes(animes); //escribe los datos actualizados de animes en el archivo JSON

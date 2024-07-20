@@ -8,5 +8,22 @@
     "id": 2,
     "title": "Pichachú",
     "genre": "Lucha"
+  },
+  {
+    "id": 3,
+    "title": "Goku",
+    "gender": "Aventura",
+    "studioId": {
+      "message": "Estudio no encontrado"
+    }
+  },
+  {
+    "id": 4,
+    "title": "pokemon",
+    "gender": "Aventura",
+    "studioId": {
+      "id": 3,
+      "name": "Warner"
+    }
   }
 ]

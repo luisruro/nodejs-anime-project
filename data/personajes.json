@@ -18,5 +18,30 @@
     "id": 4,
     "name": "Rubio",
     "animeId": 5
+  },
+  {
+    "id": 5,
+    "name": "Rubio",
+    "animeId": {
+      "id": 2,
+      "title": "Pichachú",
+      "genre": "Lucha"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Rubio",
+    "animeId": {
+      "message": "Anime no encontrado"
+    }
+  },
+  {
+    "id": 7,
+    "name": "katerine",
+    "animeId": {
+      "id": 1,
+      "title": "Goku",
+      "genre": "Aventura"
+    }
   }
 ]
