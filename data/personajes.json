@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Aladin",
+    "animeId": 1
+  },
+  {
+    "id": 2,
+    "name": "Spiderman",
+    "animeId": 3
+  }
+]

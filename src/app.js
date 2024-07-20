@@ -4,6 +4,7 @@ import express from "express";
 import router from "./routes/animes.js";
 import routerDirectores from "./routes/directores.js";
 import routerEstudios from "./routes/estudios.js";
+import routerPersonajes from "./routes/personajes.js";
 // const directoresRoutes = require("./routes/directores");
 // const estudiosRoutes = require("./routes/estudios");
 // const personajesRoutes = require("./routes/personajes");
@@ -26,7 +27,7 @@ app.use(express.json());
 app.use("/animes", router);
 app.use("/directores", routerDirectores);
 app.use("/estudios", routerEstudios);
-// app.use("/personajes", personajesRoutes);
+app.use("/personajes", routerPersonajes);
 //Middleware para manejo de errores
 app.use(errorHandler);
 
