@@ -107,7 +107,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     const animes = await readAnimes(); ////traemos todos los animes almacenados
     //El método filter crea un nuevo array que contiene todos los elementos del array 'animes' excepto el que tiene un 'id' que coincide con el 'id' especificado en la URL req.params.id ejemplo (http://localhost:3000/animes/1)
-    // !== significa que no sea igual al número que se le esta dando, entonces trae todo los animes.id que no sean iguales al id que le estoy dando
+    // !== significa que no sea igual al número que se le esta dando, entonces trae todo los animes.id que no son iguales al id que le estoy dando
     //Entonces la constante alamacena el nuevo array de animes sin el que coincidió con el 'id' especificado
     const newAnimes = animes.filter((anime) => anime.id !== parseInt(req.params.id)); 
     if (animes.length === newAnimes.length) {
